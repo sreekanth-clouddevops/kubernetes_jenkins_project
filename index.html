@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Apache Demo Site</title>
+
+  <!-- Very small inline styling so it looks decent without external CSS -->
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; line-height: 1.6; color: #333; }
+    header { background:#0b6; color:white; padding:20px 16px; }
+    nav { background:#eee; padding:8px 16px; }
+    nav a { margin-right:12px; color:#036; text-decoration:none; }
+    main { padding:16px; }
+    .badge { display:inline-block; padding:4px 8px; background:#036; color:white; border-radius:4px; font-size:0.9em; }
+    footer { background:#f4f4f4; padding:12px 16px; font-size:0.9em; color:#666; text-align:center; }
+    pre { background:#222; color:#eee; padding:12px; overflow:auto; border-radius:6px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Apache Demo Site</h1>
+    <div style="font-size:0.95em">Deployed with Docker &amp; Apache</div>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#files">Files</a>
+    <a href="#health">Health</a>
+    <span style="float:right" class="badge">v1.0</span>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About this demo</h2>
+      <p>
+        This is a minimal static site to verify that <strong>Apache (httpd)</strong> inside the container
+        is serving files correctly. Replace this content with your real app files (HTML, CSS, JS).
+      </p>
+    </section>
+
+    <section id="files">
+      <h2>Files served</h2>
+      <p>Place your files in the Apache document root:</p>
+      <pre>/usr/local/apache2/htdocs/</pre>
+      <p>The default file served by Apache is <code>index.html</code>.</p>
+    </section>
+
+    <section id="health">
+      <h2>Quick health checks</h2>
+      <ul>
+        <li>Visit <code>http://&lt;server-ip&gt;/</code> in the browser — you should see this page.</li>
+        <li>From inside the container: <code>curl -I http://localhost/</code> should return <code>HTTP/1.1 200 OK</code>.</li>
+        <li>A simple file test: <code>ls -la /usr/local/apache2/htdocs/</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Example curl test</h2>
+      <pre>curl -sS http://localhost/ | head -n 20</pre>
+    </section>
+  </main>
+
+  <footer>
+    Built for demo — remove these notes in production.
+  </footer>
+
+</body>
+</html>
